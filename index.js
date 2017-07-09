@@ -16,9 +16,9 @@ var options = {
 };
 
 app.get('/', (req, res) => {
-    rq(options)
-        .then(res => {
-            res.send(res).end();
+    rp(options)
+        .then(json => {
+            res.send(json).end();
         })
         .catch(err => {
             console.error(err);
