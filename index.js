@@ -10,6 +10,8 @@ const rp = require('request-promise');
 const express = require('express');
 const app = express();
 
+app.set('view engine', 'pug');
+
 var options = {
     uri: 'http://localhost:42000/getstat',
     json: true
@@ -18,7 +20,7 @@ var options = {
 app.get('/', (req, res) => {
     rp(options)
         .then(json => {
-            res.send(json.result[0].temperature).end();
+            res.render('index', json).end();
         })
         .catch(err => {
             console.error(err);

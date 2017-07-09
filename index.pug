@@ -1,0 +1,12 @@
+doctype
+html
+  head
+    title= Mining Monitor
+  body
+    h1= current_server
+    each miner in result
+      li
+        span= miner.name
+        span= miner.temperature
+        span= miner.gpu_power_usage
+        span= miner.speed_sps
