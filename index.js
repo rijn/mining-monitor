@@ -11,6 +11,7 @@ const express = require('express');
 const app = express();
 
 app.set('view engine', 'pug');
+app.set('views', './views');
 
 var options = {
     uri: 'http://localhost:42000/getstat',
@@ -20,7 +21,7 @@ var options = {
 app.get('/', (req, res) => {
     rp(options)
         .then(json => {
-            res.render('index', json).end();
+            res.render('index', json);
         })
         .catch(err => {
             console.error(err);
