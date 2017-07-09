@@ -18,7 +18,7 @@ var options = {
 app.get('/', (req, res) => {
     rp(options)
         .then(json => {
-            res.send(json).end();
+            res.send(json.result[0].temperature).end();
         })
         .catch(err => {
             console.error(err);
