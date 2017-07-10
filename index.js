@@ -31,18 +31,18 @@ app.get('/', (req, res) => {
             let earned = results[1].payouts.reduce((acc, item) => acc + item.amount, 0.0) * 1e-8;
             let unpaid = results[1].unpaid * 1e-8;
             let ZECUSD = results[2].result.XZECZUSD[results[2].result.XZECZUSD.length - 1][1];
-            res
-                .send([].concat(
-                    results[0].result.map(({ name, temperature, gpu_power_usage }) => `${name}: ${temperature} C, ${gpu_power_usage} W`),
-                    [
-                        ``,
-                        `Earned: ` + earned,
-                        `Unpaid: ` + unpaid,
-                        `ZECUSD: ` + ZECUSD,
-                        `USD: ` + ((earned + unpaid) * Number(ZECUSD)).toFixed(2)
-                    ],
-                    [ `<script>setTimeout(() => { location.reload(); }, 10000);</script>` ]
-                ).join('<br/>'));
+            let body = [].concat(
+                results[0].result.map(({ name, temperature, gpu_power_usage }) => `${name}: ${temperature} C, ${gpu_power_usage} W`),
+                [
+                    ``,
+                    `Earned: ` + earned,
+                    `Unpaid: ` + unpaid,
+                    `ZECUSD: ` + ZECUSD,
+                    `USD: ` + ((earned + unpaid) * Number(ZECUSD)).toFixed(2)
+                ],
+                [ `<script>setTimeout(() => { location.reload(); }, 10000);</script>` ]
+            ).join('<br/>');
+            res.send(`<html><head><style>body { background: #073642; color: #657b83; font-size: 30px; }</style></head><body>${body}</body></html>`);
         })
         .catch(err => {
             console.error(err);
