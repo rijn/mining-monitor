@@ -40,7 +40,8 @@ app.get('/', (req, res) => {
                         `Unpaid: ` + unpaid,
                         `ZECUSD: ` + ZECUSD,
                         `USD: ` + ((earned + unpaid) * Number(ZECUSD)).toFixed(2)
-                    ]
+                    ],
+                    [ `<script>setTimeout(() => { location.reload(); }, 10000);</script>` ]
                 ).join('<br/>'));
         })
         .catch(err => {
