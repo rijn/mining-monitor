@@ -32,13 +32,16 @@ app.get('/', (req, res) => {
             let unpaid = results[1].unpaid * 1e-8;
             let ZECUSD = results[2].result.XZECZUSD[results[2].result.XZECZUSD.length - 1][1];
             res
-                .send([
-                    `${results[0].result[0].name}: ${results[0].result[0].temperature}`,
-                    `Earned: ` + earned,
-                    `Unpaid: ` + unpaid,
-                    `ZECUSD: ` + ZECUSD,
-                    `USD: ` + (earned + unpaid) * Number(ZECUSD)
-                ].join('<br/>'));
+                .send([].concat(
+                    results[0].result.map(({ name, temperature, gpu_power_usage }) => `${name}: ${temperature} C, ${gpu_power_usage} W`),
+                    [
+                        ``,
+                        `Earned: ` + earned,
+                        `Unpaid: ` + unpaid,
+                        `ZECUSD: ` + ZECUSD,
+                        `USD: ` + ((earned + unpaid) * Number(ZECUSD)).toFixed(2)
+                    ]
+                ).join('<br/>'));
         })
         .catch(err => {
             console.error(err);
@@ -46,4 +49,4 @@ app.get('/', (req, res) => {
         });
 });
 
-app.listen(3001, () => { });
+app.listen(3000, () => { });
