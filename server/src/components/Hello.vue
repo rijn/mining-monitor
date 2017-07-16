@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <ul>
-      <li class="connectivity" :class="{ connected: connectivity }"><span></span></li>
+      <li class="connectivity"><span :class="{ connected: connected }"></span></li>
       <li class="card"><ZcashUsd></ZcashUsd></li>
     </ul>
   </div>
@@ -42,10 +42,13 @@ ul {
   list-style-type: none;
   padding: 0;
   text-align: center;
-}
 
-li {
-  display: block;
+  li {
+    display: block;
+
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
 }
 
 .connectivity {
@@ -53,6 +56,14 @@ li {
     display: block;
     height: 1rem;
     width: 1rem;
+
+    margin: 0 auto;
+
+    background: #cb4b16;
+
+    &.connected {
+      background: #859900;
+    }
   }
 }
 </style>
