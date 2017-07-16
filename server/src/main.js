@@ -4,6 +4,8 @@ import VueSocketio from 'vue-socket.io'
 import App from './App'
 import router from './router'
 
+import 'normalize.css'
+
 Vue.use(VueSocketio, 'http://localhost:3000')
 Vue.use(VueBus)
 

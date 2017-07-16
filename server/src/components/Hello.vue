@@ -4,6 +4,7 @@
       <li class="connectivity"><span :class="{ connected: connected }"></span></li>
       <li class="card"><ZcashUsd></ZcashUsd></li>
       <li class="card"><Pool></Pool></li>
+      <li class="card"><Miner></Miner></li>
     </ul>
   </div>
 </template>
@@ -11,11 +12,12 @@
 <script>
 import ZcashUsd from '../../plugins/zcash-usd/render'
 import Pool from '../../plugins/pool/render'
+import Miner from '../../plugins/miner/render.vue'
 
 export default {
   name: 'hello',
 
-  components: { ZcashUsd, Pool },
+  components: { ZcashUsd, Pool, Miner },
 
   data () {
     return {
@@ -41,8 +43,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 ul {
-  list-style-type: none;
-  padding: 0;
   text-align: center;
 
   li {

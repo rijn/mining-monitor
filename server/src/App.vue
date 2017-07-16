@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <header><h4>ZCash Mine Field</h4></header>
     <router-view></router-view>
   </div>
 </template>
@@ -23,6 +24,17 @@ body {
   font-family: 'Consolas', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ul, li {
+  list-style-type: none;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  background: #073642;
+  overflow: hidden;
 }
 
 .card {
