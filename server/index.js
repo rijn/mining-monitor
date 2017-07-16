@@ -27,6 +27,7 @@ var bus = ((() => {
 })());
 
 require('./plugins/zcash-usd')({ bus, io });
+require('./plugins/pool')({ bus, io });
 
 io.on('connection', function (socket) {
   require('./plugins/miner')({ bus, socket });

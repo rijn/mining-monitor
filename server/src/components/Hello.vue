@@ -3,17 +3,19 @@
     <ul>
       <li class="connectivity"><span :class="{ connected: connected }"></span></li>
       <li class="card"><ZcashUsd></ZcashUsd></li>
+      <li class="card"><Pool></Pool></li>
     </ul>
   </div>
 </template>
 
 <script>
 import ZcashUsd from '../../plugins/zcash-usd/render'
+import Pool from '../../plugins/pool/render'
 
 export default {
   name: 'hello',
 
-  components: { ZcashUsd },
+  components: { ZcashUsd, Pool },
 
   data () {
     return {

@@ -13,13 +13,14 @@ Vue.config.productionTip = false
 new Vue({
   sockets: {
     connect () {
-      this.$socket.emit('register')
       this.$bus.emit('connectivity', true)
+      this.$socket.emit('register')
     },
     disconnect () {
       this.$bus.emit('connectivity', false)
     },
     downstream (data) {
+      this.$bus.emit('connectivity', true)
       data.forEach(({ module, message }) => {
         this.$bus.emit(module, message)
       })

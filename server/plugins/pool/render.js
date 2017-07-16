@@ -1,14 +1,15 @@
 export default {
-  name: 'zcash-usd',
+  name: 'pool',
 
   template: `<div>
-    <p>1 ZEC : {{ ZECUSD }} USD</p>
+    <p>EARNED : {{ earned }} ZEC</p>
+    <p>UNPAID : {{ unpaid }} ZEC</p>
   </div>`,
 
   data () {
     return {
-      line: [],
-      ZECUSD: 'pending'
+      earned: 'pending',
+      unpaid: 'pending'
     }
   },
 
@@ -20,9 +21,9 @@ export default {
   },
 
   methods: {
-    process ({ time, ZECUSD }) {
-      this.ZECUSD = ZECUSD;
-      // this.line.push({ time, ZECUSD });
+    process ({ earned, unpaid }) {
+      this.earned = earned;
+      this.unpaid = unpaid;
     }
   }
 }
