@@ -7,12 +7,12 @@ var ip = require("ip");
 var ping = require('ping');
 var rp = require('request-promise');
 
-var url = 'http://localhost:3150';
+var url = 'http://192.168.1.138:3150';
 const socket = io(url);
 
 setInterval(function(){
 
-var host = '192.168.1.1';
+var host = 'us1-zcash.flypool.org';
 
 Promise.all([
     rp({
@@ -25,7 +25,7 @@ Promise.all([
         'name': 'test',
         'ip': ip.address(),
         'server': values[0].current_server,
-        'ping': values[0].time,
+        'ping': values[1].time,
         'gpus': values[0].result.map(gpu => { return {
             name: gpu.name,
             temperature: gpu.temperature,
