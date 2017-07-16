@@ -6,7 +6,7 @@ import router from './router'
 
 import 'normalize.css'
 
-Vue.use(VueSocketio, 'http://localhost:3000')
+Vue.use(VueSocketio, '/')
 Vue.use(VueBus)
 
 Vue.config.productionTip = false

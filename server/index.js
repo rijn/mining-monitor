@@ -1,6 +1,8 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var path = require('path');
 
 var bus = ((() => {
   var Bus = function () {
@@ -25,6 +27,8 @@ var bus = ((() => {
 
   return new Bus();
 })());
+
+app.use('/', express.static(path.join(__dirname, 'dist')));
 
 require('./plugins/zcash-usd')({ bus, io });
 require('./plugins/pool')({ bus, io });
